@@ -2,10 +2,10 @@ package dstu.csae.matocip.cipher;
 
 import java.math.BigInteger;
 
-public interface Cipher {
+public interface Cipher<P, C> {
 
-    BigInteger encrypt(BigInteger plaintext);
+    C encrypt(P plaintext);
 
-    BigInteger decrypt(BigInteger ciphertext);
+    P decrypt(C ciphertext);
 
 }

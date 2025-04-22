@@ -1,22 +1,34 @@
 package dstu.csae.matocip.utils;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Random;
 
-public class PrimeNumberOperator {
+public class NumberOperator {
 
     private static final int TEST_COUNT = 100;
 
-    public static BigInteger nextBigInt(int bitCount, BigInteger origin, BigInteger bound) {
+    public static BigInteger nextBigInt(int bitCount, BigInteger origin, BigInteger bound){
+        BigInteger next;
+        do{
+            next = nextBigInt(bitCount);
+        }while (next.compareTo(origin) < 0 || next.compareTo(bound) >= 0);
+        return next;
+    }
+
+
+    public static BigInteger nextBigInt(int bigCount){
+        return new BigInteger(bigCount, new Random());
+    }
+
+    public static BigInteger nextPrimeBigInt(int bitCount, BigInteger origin, BigInteger bound) {
         BigInteger next;
         do {
-            next = nextBigInt(bitCount);
+            next = nextPrimeBigInt(bitCount);
         }while (isOutOfBounds(next, origin, bound));
         return next;
     }
 
-    public static BigInteger nextBigInt(int bitCount){
+    public static BigInteger nextPrimeBigInt(int bitCount){
         Random random = new Random();
         BigInteger next;
         do {

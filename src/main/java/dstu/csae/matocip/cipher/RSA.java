@@ -1,8 +1,7 @@
-package dstu.csae.matocip.cipher.rsa;
+package dstu.csae.matocip.cipher;
 
-import dstu.csae.matocip.cipher.Cipher;
 import dstu.csae.matocip.utils.EuclidAlgorithms;
-import dstu.csae.matocip.utils.PrimeNumberOperator;
+import dstu.csae.matocip.utils.NumberOperator;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import java.math.BigInteger;
 import java.util.*;
 
 @Getter
-public class RSA implements Cipher {
+public class RSA implements Cipher<BigInteger, BigInteger> {
     private static final String NUMBERS_ARE_NOT_PRIME = "Числа p и q не являются простыми";
     private static final String ILLEGAL_BIT_COUNT = "Количество бит открытого ключа не соответствует заданной конфигурации";
     private static final String NOT_MUTUALLY_SIMPLE = "Параметр e не взаимно простой со значением m = %s";
@@ -32,8 +31,8 @@ public class RSA implements Cipher {
                @NonNull BigInteger q,
                @NonNull BigInteger e)
             throws IllegalArgumentException{
-        if(!(PrimeNumberOperator.isProbablePrime(p) &&
-                PrimeNumberOperator.isProbablePrime(q))){
+        if(!(NumberOperator.isProbablePrime(p) &&
+                NumberOperator.isProbablePrime(q))){
             throw new IllegalArgumentException(NUMBERS_ARE_NOT_PRIME);
         }
         BigInteger n =  p.multiply(q);
