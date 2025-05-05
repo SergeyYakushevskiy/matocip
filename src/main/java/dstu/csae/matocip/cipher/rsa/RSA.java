@@ -1,5 +1,6 @@
-package dstu.csae.matocip.cipher;
+package dstu.csae.matocip.cipher.rsa;
 
+import dstu.csae.matocip.cipher.Cipher;
 import dstu.csae.matocip.utils.EuclidAlgorithms;
 import dstu.csae.matocip.utils.NumberOperator;
 import lombok.Getter;
